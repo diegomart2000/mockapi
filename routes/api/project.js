@@ -14,7 +14,7 @@ module.exports = ProjectRouter;
  *
  * The Project endpoint exposes a set of methods for managing project objects.
  */
-function ProjectRouter(app){
+function ProjectRouter(app) {
 	app.get('/_m_/api/project', security.session, security.restrict, list);
 	app.get('/_m_/api/project/:id', security.session, security.user, security.project, get);
 	app.post('/_m_/api/project', security.session, security.user, security.project, post);
@@ -25,27 +25,27 @@ function ProjectRouter(app){
 /**
  * To get a project object by the given id
  */
-function list(req, res){
+function list(req, res) {
 	var user = req.user;
 	var projectId = req.params.id;
 
 	logger.info('project router : list : list project by id ', projectId);
 
-	try{
+	try {
 		projectService.list(
 			user,
 
 			//onSuccess
-			function(projects){
+			function(projects) {
 				res.send(projects);
 			},
-		
+
 			//onError
-			function(err){
+			function(err) {
 				res.send(err)
 			});
 
-	}catch(err){
+	} catch (err) {
 		var title = 'Error while calling list project service';
 		logger.error(title, err);
 		res.send(new Exception(500, title, err.message, err));
@@ -55,28 +55,28 @@ function list(req, res){
 /**
  * To get a project object by the given id
  */
-function get(req, res){
+function get(req, res) {
 	var user = req.user;
 	var projectId = req.params.id;
 
 	logger.info('project router : get : get project by id ', projectId);
 
-	try{
+	try {
 		projectService.get(
 			projectId,
 
 			//onSuccess
-			function(project){
+			function(project) {
 				project = project || Exception.notFound('Project', projectId);
 				res.send(project);
 			},
-		
+
 			//onError
-			function(err){
+			function(err) {
 				res.send(err)
 			});
 
-	}catch(err){
+	} catch (err) {
 		var title = 'Error while calling get project service';
 		logger.error(title, err);
 		res.send(new Exception(500, title, err.message, err));
@@ -86,29 +86,29 @@ function get(req, res){
 /**
  * To post a project object by the given id
  */
-function post(req, res){
+function post(req, res) {
 	var user = req.user;
 	var project = req.body;
 
 	logger.info('project router : post : insert project by id ', project._id);
 
-	try{
+	try {
 
 		projectService.insert(
 			user,
 			project,
 
 			//onSuccess
-			function(newProject){
+			function(newProject) {
 				res.send(newProject);
 			},
-		
+
 			//onError
-			function(err){
+			function(err) {
 				res.send(err)
 			});
 
-	}catch(err){
+	} catch (err) {
 		var title = 'Error while calling the insert project service';
 		logger.error(title, err);
 		res.send(new Exception(500, title, err.message, err));
@@ -118,30 +118,30 @@ function post(req, res){
 /**
  * To put a project object by the given id
  */
-function put(req, res){
+function put(req, res) {
 	var user = req.user;
 	var projectId = req.params.id;
 	var project = req.body;
 
 	logger.info('project router : put : update project by id ', projectId);
 
-	try{
+	try {
 		projectService.update(
 			user,
 			projectId,
 			project,
 
 			//onSuccess
-			function(project){
+			function(project) {
 				project = project || Exception.notFound('Project', projectId);
 				res.send(project);
 			},
-		
+
 			//onError
-			function(err){
+			function(err) {
 				res.send(err)
 			});
-	}catch(err){
+	} catch (err) {
 		var title = 'Error while calling the update project service';
 		logger.error(title, err);
 		res.send(new Exception(500, title, err.message, err));
@@ -151,27 +151,27 @@ function put(req, res){
 /**
  * To del a project object by the given id
  */
-function del(req, res){
+function del(req, res) {
 	var user = req.user;
 	var projectId = req.params.id;
 
 	logger.info('project router : del : remove project by id ', projectId);
 
-	try{
+	try {
 		projectService.delete(
 			user,
 			projectId,
 
 			//onSuccess
-			function(newProject){
+			function(newProject) {
 				res.send(newProject);
 			},
-		
+
 			//onError
-			function(err){
+			function(err) {
 				res.send(err)
 			});
-	}catch(err){
+	} catch (err) {
 		var title = 'Error while calling the remove project service';
 		logger.error(title, err);
 		res.send(new Exception(500, title, err.message, err));

@@ -36,10 +36,10 @@ function index(req, res, next) {
 	logger.debug('index router : index : rendering ', host);
 
 	//Route to the dash baby
-	if(host === config.host){
+	if (host === config.host) {
 		res.redirect('/_m_/projects');
-	//Otherwise route to the project
-	}else{
+		//Otherwise route to the project
+	} else {
 		next();
 	}
 
@@ -52,31 +52,38 @@ function projects(req, res) {
 	res.send(req.session.id);
 };
 
+/**
+ * Renders the mocked API response
+ */
 function resources(req, res) {
 	var host = req.header('host').split('.').reverse().pop();
-
 	logger.debug('resources : check for [%s, %s, %s]', (path = req.originalUrl), (method = req.route.method), (host));
+
+	//Allow CORS
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "X-Requested-With");
+
 	try {
 		projectService
 			.get(host)
 			.done(
 				//success
-				function(project){
-					if(project){
+				function(project) {
+					if (project) {
 						res.send(project);
-					}else{
+					} else {
 						res.send(Exception.notFound('Project', host));
 					}
 				},
 
 				//error
-				function(err){
+				function(err) {
 					res.send(err);
 				});
 
-		} catch (err) {
-			var title = 'Error loading project';
-			logger.error(title, err);
-			res.send(new Exception(500, title, err.message, err));
-		}
+	} catch (err) {
+		var title = 'Error loading project';
+		logger.error(title, err);
+		res.send(new Exception(500, title, err.message, err));
+	}
 }
