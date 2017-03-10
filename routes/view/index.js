@@ -20,7 +20,7 @@ module.exports = IndexRouter;
  */
 function IndexRouter(app) {
 	app.get('/', index);
-	app.get('/projects', security.session, projects);
+	app.get('/_m_/projects', security.session, projects);
 
 	//To resolve all resources
 	app.get('/', resources);
@@ -37,7 +37,7 @@ function index(req, res, next) {
 
 	//Route to the dash baby
 	if(host === config.host){
-		res.redirect('/projects');
+		res.redirect('/_m_/projects');
 	//Otherwise route to the project
 	}else{
 		next();
