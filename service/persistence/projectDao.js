@@ -100,13 +100,13 @@ ProjectDao.prototype.get = function(projectId, onSuccess, onError){
  * user <User model, as owner>
  * projectId <String, unique project id>
  */
-ProjectDao.prototype.insert = function(userId, projectId, project, onSuccess, onError){
+ProjectDao.prototype.insert = function(userId, project, onSuccess, onError){
 	logger.info('projects dao : insert : about to save project for user ', userId);
 	try{
 		
 		var projects = this.projects;
 
-		project._id = projectId.toLowerCase() || db.ObjectId().toHexString(); //Project Id must be provided as string, if not, create a new one, but an ugly one
+		project._id = project._id.toLowerCase(); //Project Id must be provided as string, if not, create a new one, but an ugly one
 		project.userId = typeof userId == 'string' ? db.ObjectId(userId) : userId; //Convert the string into an ObjectId
 		
 		project.creationDate = new Date().getTime();

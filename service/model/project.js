@@ -5,6 +5,14 @@ var _ = require('underscore');
 var schema = {
 	type: "object",
 	properties: {
+		_id: {
+			type: "string",
+			pattern: "^[a-z0-9\-]+$",
+			minLength: 1,
+			maxLength: 100,
+			required: true
+		},
+
 		description: {
 			type: "string"
 		},

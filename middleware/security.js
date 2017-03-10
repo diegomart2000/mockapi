@@ -63,9 +63,12 @@ exports.user = function(req, res, next) {
 	next();
 };
 
-//User Session Must Have Access to required project
+//If the user is anonymus, make the id always public prefixed
 exports.project = function(req, res, next) {
-	if(req.user._id === ANONYMUS) req.params.id = ['public', req.params.id].join('-');
+	if(req.user._id === ANONYMUS){
+		if(req.params.id) req.params.id = ['public', req.params.id].join('-');
+		if(req.body._id) req.body._id = ['public', req.body._id].join('-');
+	}
 	next();
 };
 

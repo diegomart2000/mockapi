@@ -66,19 +66,13 @@ exports.get = function(projectId, onSuccess, onError) {
 /**
  * Updates an existing project by the given _id
  */
-exports.insert = function(user, projectId, plain, onSuccess, onError) {
+exports.insert = function(user, plain, onSuccess, onError) {
 	logger.info('project service : insert : about to insert a project');
 
 	try {
 
 		var project = new Project();
 		project.fill(plain);
-
-		//first check if the project id is valid
-		if (!projectId.match(/^[a-z0-9\-]+$/gi)){
-			onError(new Exception(400, 'Project id is invalid'));
-			return;	
-		}
 
 		//then check if the insert values are valid
 		if (!project.valid()) {
@@ -87,7 +81,7 @@ exports.insert = function(user, projectId, plain, onSuccess, onError) {
 		}
 
 		new ProjectDao()
-			.insert(user._id, projectId, project)
+			.insert(user._id, project)
 			.done(onSuccess, onError);
 
 	} catch (err) {

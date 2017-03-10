@@ -15,11 +15,11 @@ module.exports = ProjectRouter;
  * The Project endpoint exposes a set of methods for managing project objects.
  */
 function ProjectRouter(app){
-	app.get('/api/project', security.session, security.restrict, list);
-	app.get('/api/project/:id', security.session, security.user, security.project, get);
-	app.post('/api/project/:id', security.session, security.user, security.project, post);
-	app.put('/api/project/:id', security.session, security.user, security.project, put);
-	app.del('/api/project/:id', security.session, security.user, security.project, del);
+	app.get('/_m_/api/project', security.session, security.restrict, list);
+	app.get('/_m_/api/project/:id', security.session, security.user, security.project, get);
+	app.post('/_m_/api/project', security.session, security.user, security.project, post);
+	app.put('/_m_/api/project/:id', security.session, security.user, security.project, put);
+	app.del('/_m_/api/project/:id', security.session, security.user, security.project, del);
 };
 
 /**
@@ -88,16 +88,14 @@ function get(req, res){
  */
 function post(req, res){
 	var user = req.user;
-	var projectId = req.params.id;
 	var project = req.body;
 
-	logger.info('project router : post : insert project by id ', projectId);
+	logger.info('project router : post : insert project by id ', project._id);
 
 	try{
 
 		projectService.insert(
 			user,
-			projectId,
 			project,
 
 			//onSuccess
