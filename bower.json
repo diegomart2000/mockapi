@@ -20,6 +20,6 @@
     "glyphicons": "^0.0.2",
     "handlebars": "^4.0.5",
     "animate.css": "^3.5.2",
-    "bootstrap.min": "https://bootswatch.com/paper/bootstrap.min.css"
+    "bootstrap.min": "https://bootswatch.com/flatly/bootstrap.min.css"
   }
 }

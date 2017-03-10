@@ -45,7 +45,15 @@ exports.get = function(projectId, onSuccess, onError) {
 	try{
 		var dao = new ProjectDao();
 		var promise = dao
-			.get(projectId);
+			.get(projectId)
+			//Compile paths
+			.then(project => {
+				project.resources.forEach(resource => {
+					logger.debug(`project service : get : compiled path ${resource.path.match(/(:[a-zA-Z0-9]+)/g)}`);
+				});
+
+				return project;
+			});
 
 		if(onSuccess) promise.done(onSuccess, onError);
 		else return promise;

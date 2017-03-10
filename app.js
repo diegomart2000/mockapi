@@ -39,13 +39,13 @@ app.use(app.router);
 //Setup the error handler
 ErrorHandler(app);
 
-//Bind View routes
-Index(app);
-Partials(app);
-
 //Bind API routes
 Connect(app);
 Project(app);
+
+//Bind View routes
+Index(app);
+Partials(app);
 
 //Create the server
 app.listen(app.get('port'), function(){

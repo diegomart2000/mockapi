@@ -18,6 +18,10 @@ var schema = {
             items: {
                 type: "object",
 				properties: {
+					name: {
+						type: "string"
+					},
+
 					method: {
 						enum: [ "GET", "POST", "PUT", "DEL" ]
 					},
@@ -29,6 +33,10 @@ var schema = {
 
 					content: {
 						type: "string"
+					},
+
+					contentType: {
+						enum: [ "text", "json", "html" ]
 					}
 				}
             },

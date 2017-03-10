@@ -21,12 +21,16 @@ module.exports = IndexRouter;
 function IndexRouter(app) {
 	app.get('/', index);
 	app.get('/projects', security.session, projects);
+
+	//To resolve all resources
+	app.get('/', resources);
+	app.all('/*', resources);
 };
 
 /**
  * Helper to render a index of a partial, embbeded on a full container
  */
-function index(req, res) {
+function index(req, res, next) {
 	var host = req.header('host').split('.').reverse().pop();
 
 	logger.debug('index router : index : rendering ', host);
@@ -36,29 +40,7 @@ function index(req, res) {
 		res.redirect('/projects');
 	//Otherwise route to the project
 	}else{
-		try {
-			projectService
-				.get(host)
-				.done(
-					//success
-					function(project){
-						if(project){
-							res.send(project);
-						}else{
-							res.send(Exception.notFound('Project', host));
-						}
-					},
-
-					//error
-					function(err){
-						res.send(err);
-					});
-
-		} catch (err) {
-			var title = 'Error loading project';
-			logger.error(title, err);
-			res.send(new Exception(500, title, err.message, err));
-		}
+		next();
 	}
 
 };
@@ -70,3 +52,31 @@ function projects(req, res) {
 	res.send(req.session.id);
 };
 
+function resources(req, res) {
+	var host = req.header('host').split('.').reverse().pop();
+
+	logger.debug('resources : check for [%s, %s, %s]', (path = req.originalUrl), (method = req.route.method), (host));
+	try {
+		projectService
+			.get(host)
+			.done(
+				//success
+				function(project){
+					if(project){
+						res.send(project);
+					}else{
+						res.send(Exception.notFound('Project', host));
+					}
+				},
+
+				//error
+				function(err){
+					res.send(err);
+				});
+
+		} catch (err) {
+			var title = 'Error loading project';
+			logger.error(title, err);
+			res.send(new Exception(500, title, err.message, err));
+		}
+}
