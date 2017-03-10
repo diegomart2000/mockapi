@@ -99,6 +99,7 @@ exports.update = function(user, projectId, plain, onSuccess, onError) {
 	logger.info('project service : update : about to update a project');
 
 	try {
+		plain._id = projectId;
 
 		var project = new Project();
 		project.fill(plain);

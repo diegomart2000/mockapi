@@ -46,7 +46,9 @@ var schema = {
 					contentType: {
 						enum: [ "text", "json", "html" ]
 					}
-				}
+				},
+
+				additionalProperties: false
             },
             "minItems": 1,
             "uniqueItems": true
@@ -61,6 +63,7 @@ function Project(){
 	this._id = null;
 	this.userId = null; //The owner userId
 
+	this.readme = null;
 	this.description = null;
 	this.resources = null;
 
@@ -73,6 +76,7 @@ function Project(){
 Project.prototype.fill = function(plain){
 	this._id = plain._id; //the subdomain will be our id, since it should be unique
 	this.description = plain.description;
+	this.readme = plain.readme;
 	this.resources = plain.resources;
 
 	return this;
@@ -98,6 +102,7 @@ Project.prototype.getUpdate = function(){
 	var updatables = _.pick(
 		this,
 		'description',
+		'readme',
 		'resources'
 	);
 
