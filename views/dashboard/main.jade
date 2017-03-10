@@ -1,0 +1,32 @@
+extends ../layout-inapp
+
+block content
+	#writing-container
+		
+	//Topic Form Template
+	script#topic-form-template(type='text/x-handlebars-template')
+		.modal.fade(role="dialog", aria-labelledby="modal-label", aria-hidden=true)
+			.modal-dialog
+				.modal-content
+					.modal-header
+						button(type="button", data-dismiss="modal", aria-label="Close").close: span(aria-hidden="true")&times;  
+						h4.modal-title#modal-label Agregar nueva categoría
+
+					.modal-body
+						.form-group
+							label Nombre de la categoría
+							input(type='text', name='name', placeholder='Ingresa el nombre de la categoría...', required=true, autocomplete='off', autofocus).form-control
+
+					.modal-footer
+						button(type="button", data-action="submit").btn.btn-primary Crear categoría
+
+	//Writing Form Template
+	script#writing-form-template(type='text/x-handlebars-template')
+		.clearfix
+			.col-md-8
+				input(type="text", name="name", required="true", placeholder="Nombre del documento...").form-control.title-document-control
+			.col-md-4
+				.pull-right(style='margin-top: 13px;')
+					button.btn.btn-primary.btn-sm(data-action='submit') Guardar
+		.document-container
+				textarea(name='copy', length=1001024, placeholder='Escribe aquí el contenido de tu documento...').f-w.form-control.form-document-control

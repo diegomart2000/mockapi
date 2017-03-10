@@ -1,0 +1,27 @@
+﻿
+ul.nav.nav-sidebar.m-t-xs
+	li: a Loading...
+
+div: a(data-action='add-new', href='#').text-gray.dk
+	i.fa.fa-fw.fa-plus-circle
+	span &nbsp;Nueva categoría
+
+script#topic-item(type='template/handlebars')
+	a.category(data-role='actionable-items') {{name}}
+		span(data-role='item-actions')
+			i.fa.fa-fw.fa-pencil(title="Editar categoría", _id="{{_id}}")
+			i.fa.fa-fw.fa-times(title="Eliminar categoría", _id="{{_id}}")
+		.pull-right
+			i.fa.fa-fw.fa-plus(title="Crear nuevo documento", _id="{{_id}}", data-action="add-document")
+
+	| {{#each index}}
+	a(data-role='actionable-items', title='Click para editar', data-action="edit-document", _id="{{_id}}")
+		i.fa.fa-fw.fa-file-text-o
+		span.doc-link &nbsp;{{name}}
+		div(data-role='item-actions').pull-right
+			i.fa.fa-fw.fa-times(data-action="remove-document", title="Eliminar documento", _id="{{_id}}")
+	| {{/each}}
+	| {{#unless index}}
+	a: i.text-muted sin documentos
+	| {{/unless}}
+	hr

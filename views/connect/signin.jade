@@ -1,0 +1,76 @@
+﻿extends ../landing/layout-landing
+
+block content
+	header(style="position: absolute; top: 0; width: 100%;height: 50px;line-height: 50px;")
+		.container.center-block
+			.pull-right.nav
+				a.text-white(href='/') Regístrate
+
+	section(style='margin-top: 100px;')
+		.container
+			.row 
+				.center-block.form-condensed
+					#login.ui-form.text-center.text-white.login-box(data-action='login')
+						.form-group
+							a.logo-link(href='/')
+								img(src='/img/doclet-glyph.svg', style='height: 60px;')
+
+						.first-inpage
+							.form-group
+								input(type="text", name="email", required=true, placeholder="Correo electrónico").form-control.input-lg
+								input(type="password", name="password", required=true, placeholder="Contraseña").form-control.input-lg
+
+							.form-group.bg-danger.error.hidden(requiredError='Debes completar todos los datos', invalidError='La combinación de correo electrónico y contraseña es incorrecta')
+
+							.form-group
+								button(data-action="submit").btn.btn-info.btn-lg.btn-block Ingresar
+							
+							.ui-text-center.m-t
+								a.text-white.block#forgot(href='/forgot') ¿Olvidaste tu contraseña?
+
+block scripts
+	script.
+		(function($){
+			var LoginFormView = Doclet.Api.FormView.extend({
+				el: $('#login'),
+
+				//Do some render...
+				onRender: function(){
+					var self = this;
+					self.el.fadeIn();
+					self.el.on('keypress', function(){
+						self.error.hide();	
+						self.doSubmit();
+					});
+
+					self.error = this.el.find('.error');
+				},
+
+				//Notify not valid fields
+				onInvalid: function(){
+					this.error.text(this.error.attr('requiredError')).show();
+				},
+
+				//Action event
+				doSubmit: function(){
+					if(event.which == 13) this.grab();
+				},
+
+				//do the info submit
+				onSubmit: function(credentials){
+					var self = this;
+					var form = this.form;
+					$.post("/login",credentials)
+						.done(function( item ) {
+							if(item.code == 200){
+								window.location.href = '/dashboard';
+							}else{
+								form['email'].cvgText('error', 'error');
+								self.error.text(self.error.attr('invalidError')).show();
+							}
+						});
+				}
+			});
+
+			var loginForm = new LoginFormView().render();
+		})(jQuery);

@@ -1,0 +1,36 @@
+﻿doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+
+		title 
+			if company
+				| #{company ? company.name : ''} - 
+			| Doclet
+
+		link(rel='shortcut icon', href='/img/favicon.ico')
+		link(rel='stylesheet', href='/css/vendor-bundle.css', type='text/css')
+		link(rel='stylesheet', href='/css/mockapi.css', type='text/css')
+	body
+
+		//Header
+		include ./layout/header
+
+		//Navigation
+		.col-sm-3.col-md-2.sidebar
+			include ./layout/nav
+
+		//File Nav
+		include ./layout/files
+
+		//Application main container
+		.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+			block content
+
+		//Base scripts
+		script(src='/js/vendor-bundle.js', type='text/javascript')
+		script(src='/js/require.js', type='text/javascript', data-main='/js/app/mockapi-main', data-project-id=user.projectId)
+
+		block scripts

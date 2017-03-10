@@ -1,0 +1,10 @@
+{
+	"title": "Settings",
+
+	"type": "object",
+	"properties": {
+		"name": {"type": "string", "required": true},
+		"domain": {"type": "string"},
+		"title": {"type": "string"}
+	 }
+}

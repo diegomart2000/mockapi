@@ -1,0 +1,24 @@
+{
+	"DEV": {
+		"mail": {
+			"domain": "sandbox73d977ecaeed4c449008ae3b61e6cd05.mailgun.org",
+			"key": "key-b6f383d81dc5f1af8b1a3094cd04464f",
+			"from": "mockapi.co - DEV <no-reply@mockapi.co>",
+			"noReply": "{{name}} - DEV <no-reply@mockapi.co>"
+		},
+
+		"host": "dev",
+		"salt": "Stay hungry, stay foolish."
+	},
+	
+	"PROD":{
+		"mail": {
+			"domain": "mockapi.co",
+			"key": "key-b6f383d81dc5f1af8b1a3094cd04464f",
+			"from": "mockapi.co <no-reply@mockapi.co>",
+			"noReply": "{{name}} <no-reply@mockapi.co>"
+		},
+		
+		"salt": "My job is not to be easy on people. My Job is to make them better."
+	}
+}

@@ -1,0 +1,67 @@
+﻿doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+html(xmlns="http://www.w3.org/1999/xhtml")
+	head
+		meta("http-equiv"="Content-Type","content"="text/html; charset=utf-8")
+		style(type="text/css").
+			.ExternalClass {width:100%;} 
+			.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+			line-height: 100%;} 
+			body {-webkit-text-size-adjust:none; -ms-text-size-adjust:none;} 
+			body {margin:0; padding:0;} 
+			table td {border-collapse:collapse;}    
+			p {margin:0; padding: 5px 0; margin-bottom:0; color: #606972;}       
+			h1, h2, h3, h4, h5, h6 {
+			color: #606972; 
+			line-height: 100%;
+			font-weight: 500;
+			}
+			a, a:link {
+			color:#1789E6;
+			text-decoration: underline;
+			}
+			body, #body_style {
+			background:#FFFFFF;
+			min-height:1000px;
+			color:#fff;
+			font-family:'Segoe UI', Arial, Helvetica, sans-serif;
+			font-size:12px;
+			} 
+			span.yshortcuts { color:#000; background-color:none; border:none;}
+			span.yshortcuts:hover,
+			span.yshortcuts:active,
+			span.yshortcuts:focus {color:#000; background-color:none; border:none;}
+			a:visited { color: #1789E6; text-decoration: none} 
+			a:focus   { color: #1789E6; text-decoration: underline}  
+			a:hover   { color: #1789E6C; text-decoration: underline}  
+			@media only screen and (max-device-width: 480px) {
+			}       
+			@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)  {          
+			}
+	body(style="background:#FFFFFF; min-height:1000px; color: #606972; font-family:'Segoe UI', Arial, Helvetica, sans-serif; font-size:12px",alink="#1789E6",link="#1789E6",bgcolor="#FFFFFF",text="#606972",yahoo="fix")
+		//wrapper
+		#body_style(style="padding:15px")
+			table(cellpadding="0",cellspacing="0",border="0",bgcolor="#FFFFFF",width="600",align="center")
+				//LOGO
+				tr(height="80")
+					td(width="600",valign="mid",align="left")
+						img.image_fix(src="http://www.doclet.io/img/doclet-glyph-dk.svg",alt="Doclet.com",width="34",height="48",style="display:block",border="0")
+				
+				//CONTENT
+				tr: td(width="600",style="color:#606972;font-family:'Segoe UI', Arial, Helvetica, sans-serif;font-size:14px;")
+					table(width="600",cellpadding="0",cellspacing="0",border="0",align="center",style="border-top-color:#EFF2EB; border-top-width:1px; border-top-style:solid;border-bottom-color:#EFF2EB; border-bottom-width:1px; border-bottom-style:solid;")
+						//Header
+						tr: td(width="600",valign="top",style="padding-top: 10px; padding-bottom: 10px;")
+						
+							block content
+							
+				tr: td(width="600",style="color:#bbbbbb;font-family:'Segoe UI', Arial, Helvetica, sans-serif;font-size:11px;")
+					table(width="600",cellpadding="0",cellspacing="0",border="0",align="center")
+						//FOOTER 
+						tr: td(width="300", valign="top")
+								p Doclet.com &#169;
+									br
+							td(width="300",valign="top",align="right")
+								p Costa Rica 5546, Palermo, Buenos Aires, Argentina
+									| hola@doclet.io
+				tr: td(width="600",style="color:#bbbbbb;font-family:'Segoe UI', Arial, Helvetica, sans-serif;font-size:11px;")
+		//end wrapper

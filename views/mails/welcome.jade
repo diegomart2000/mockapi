@@ -1,0 +1,14 @@
+﻿extends ./mail-layout
+
+block content
+
+	h2 Hola #{first},
+	p Te damos la bienvenida a doclet.io, el servicio que los mejores productos del mundo están utilizando para documentar lo que hacen.
+	p Para empezar a disfrutar de doclet.io debes activar tu cuenta. 
+	a(href="http://doclet.io/verify/email/#{code}",target="_blank") Activar cuenta
+
+	p Gracias por unirte!
+
+	p El equipo de 
+		a(href="http://doclet.io") doclet.io
+

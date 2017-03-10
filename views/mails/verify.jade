@@ -1,0 +1,17 @@
+﻿extends ./mail-layout
+
+block content
+
+	h2 Hola #{first},
+	p Hemos recibido una solicitud para modificar tu dirección de correo electr&oacute;nico.
+	p Para verificar que eres el dueño de esta cuenta, por favor haz clic en el siguiente enlace (o copia y pega esta URL en tu navegador preferido):&nbsp;
+		a(href="http://doclet.io/verify/email/#{code}",target="_blank") http://doclet.io/verify/email/#{code}
+
+	p Te recordamos que, a partir de este momento, para ingresar a doclet.io deber&aacute;s utilizar: 
+	p #{email}
+
+	p Atentamente,
+
+	p El equipo de 
+		a(href="http://doclet.io") Doclet
+

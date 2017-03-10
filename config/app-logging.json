@@ -1,0 +1,17 @@
+{
+  "appenders": [
+    {
+      "type": "file",
+      "absolute": true,
+      "filename": "/usr/node/logs/mockapi.log",
+      "maxLogSize": 20480,
+      "backups": 10,
+      "category": "co.mockapi"
+    },
+    {
+        "type": "console",
+        "category": "co.mockapi"
+    }
+      
+  ]
+}
