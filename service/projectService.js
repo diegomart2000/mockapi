@@ -48,9 +48,11 @@ exports.get = function(projectId, onSuccess, onError) {
 			.get(projectId)
 			//Compile paths
 			.then(project => {
-				project.resources.forEach(resource => {
-					logger.debug(`project service : get : compiled path ${resource.path.match(/(:[a-zA-Z0-9]+)/g)}`);
-				});
+				if(project){
+					project.resources.forEach(resource => {
+						logger.debug(`project service : get : compiled path ${resource.path.match(/(:[a-zA-Z0-9]+)/g)}`);
+					});
+				}
 
 				return project;
 			});
