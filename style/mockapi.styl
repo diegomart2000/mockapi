@@ -49,7 +49,25 @@ body > .container-fluid
 				text-overflow: ellipsis
 				white-space: nowrap
 				overflow: hidden
-				width: calc(100% - 24px * 2)
+				width: calc(100% - 24px)
+
+			i
+				margin-top: 17px
+				animation-duration: 0.2s
+				-webkit-animation-duration: 0.2s
+				-moz-animation-duration: 0.2s
+
+			i[data-action]
+				display: none
+				cursor: pointer
+
+			&:hover
+				& > h5
+					width: calc(100% - 24px * 2)
+				& > i[data-action]
+					display: inline-block
+					&:hover
+						color: #18bc9c
 	
 //API container
 #api-container
