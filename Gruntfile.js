@@ -16,7 +16,10 @@ module.exports = function(grunt) {
 					'lib/jquery/jquery.js',
 					'lib/underscore/underscore.js',
 					'lib/backbone/backbone.js',
-					'lib/handlebars/handlebars.js'
+					'lib/handlebars/handlebars.js',
+					'lib/codemirror/codemirror.js',
+					'bower_components/codemirror/mode/javascript/javascript.js',
+					'bower_components/codemirror/mode/htmlmixed/htmlmixed.js'	
 				],
 
 				dest: 'public/js/vendor-bundle.js'
@@ -30,7 +33,7 @@ module.exports = function(grunt) {
 				},
 
 				files: {
-					'public/css/vendor-bundle.css': ['lib/animate.css/animate.css', 'lib/bootstrap.min/index.css'],
+					'public/css/vendor-bundle.css': ['lib/animate.css/animate.css', 'lib/bootstrap.min/index.css', 'lib/codemirror/codemirror.css'],
 				}
 			}
 		},
@@ -80,5 +83,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
-	grunt.registerTask('default', ['bower', 'cssmin', 'stylus', 'concat', 'copy', 'clean']);
+	grunt.registerTask('default', ['bower', 'cssmin', 'stylus', 'concat', 'copy']);
 };

@@ -1,32 +1,55 @@
 extends ../layout-inapp
 
 block content
-	#writing-container
-		
-	//Topic Form Template
-	script#topic-form-template(type='text/x-handlebars-template')
-		.modal.fade(role="dialog", aria-labelledby="modal-label", aria-hidden=true)
-			.modal-dialog
-				.modal-content
-					.modal-header
-						button(type="button", data-dismiss="modal", aria-label="Close").close: span(aria-hidden="true")&times;  
-						h4.modal-title#modal-label Agregar nueva categoría
+	#api-container
+		.form.api-form
+			.api-header
+				input.form-control.form-control-before-edit(type="text", value="Projects Endpoint")
 
-					.modal-body
-						.form-group
-							label Nombre de la categoría
-							input(type='text', name='name', placeholder='Ingresa el nombre de la categoría...', required=true, autocomplete='off', autofocus).form-control
+			.api-body
+				.form-group
+					.input-group
+						.input-group-btn
+							select.btn.btn-default(type="button")
+								option GET
+								option POST
+								option PUT
+								option DELETE
+						//span.input-group-addon-slash
+						input.form-control(type="text", placeholder="Enter resource endpoint", value="/projects")
+						.input-group-btn
+							button.btn.btn-default(type="button") Save
 
-					.modal-footer
-						button(type="button", data-action="submit").btn.btn-primary Crear categoría
+				.response-view
+					ul.nav.nav-tabs
+						li.active: a(href="#response", data-toggle="tab", aria-expanded="true") Response
+						li: a(href="#headers", data-toggle="tab", aria-expanded="false") Headers
 
-	//Writing Form Template
-	script#writing-form-template(type='text/x-handlebars-template')
-		.clearfix
-			.col-md-8
-				input(type="text", name="name", required="true", placeholder="Nombre del documento...").form-control.title-document-control
-			.col-md-4
-				.pull-right(style='margin-top: 13px;')
-					button.btn.btn-primary.btn-sm(data-action='submit') Guardar
-		.document-container
-				textarea(name='copy', length=1001024, placeholder='Escribe aquí el contenido de tu documento...').f-w.form-control.form-document-control
+					#myTabContent.tab-content
+						.tab-pane.fade.active.in#response
+							label.radio-inline
+								input(type="radio", name="inlineRadioOptions", value="option1")
+								| JSON
+							label.radio-inline
+								input(type="radio", name="inlineRadioOptions", value="option2")
+								| HTML
+							label.radio-inline
+								input(type="radio", name="inlineRadioOptions", value="option3")
+								| TEXT
+							
+							textarea#code.form-control
+						
+						.tab-pane.fade#headers
+					
+				.request-view
+					hr
+					h4 Requests view
+						span.badge.pull-right Last call 10ms ago
+					ul.nav.nav-tabs
+						li.active: a(href="#request-body", data-toggle="tab", aria-expanded="true") Request
+						li: a(href="#request-headers", data-toggle="tab", aria-expanded="false") Headers
+					#request-tabs.tab-content
+						.tab-pane.fade.active.in#request-body
+							textarea#code-request.form-control
+						
+						.tab-pane.fade#request-headers

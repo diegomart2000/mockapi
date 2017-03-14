@@ -49,7 +49,7 @@ function index(req, res, next) {
  * Helper to render a index of a partial, embbeded on a full container
  */
 function projects(req, res) {
-	res.send(req.session.id);
+	res.render('dashboard/main');
 };
 
 /**

@@ -2,59 +2,7 @@ var validate = require('jsonschema').validate;
 var _ = require('underscore');
 
 // Prject schema validation
-var schema = {
-	type: "object",
-	properties: {
-		_id: {
-			type: "string",
-			pattern: "^[a-z0-9\-]+$",
-			minLength: 1,
-			maxLength: 100,
-			required: true
-		},
-
-		description: {
-			type: "string"
-		},
-
-		readme: {
-			type: "string"
-		},
-
-		resources: {
-			type: "array",
-			items: {
-				type: "object",
-				properties: {
-					name: {
-						type: "string"
-					},
-
-					method: {
-						enum: ["GET", "POST", "PUT", "DEL"]
-					},
-
-					path: {
-						type: "string",
-						required: true
-					},
-
-					content: {
-						type: "string"
-					},
-
-					contentType: {
-						enum: ["text", "json", "html"]
-					}
-				},
-
-				additionalProperties: false
-			},
-			"minItems": 1,
-			"uniqueItems": true
-		}
-	}
-};
+var schema = require('./schema/project.json');
 
 /**
  * Project class
