@@ -40,7 +40,7 @@
 					},
 
 					"contentType": {
-						"enum": ["text", "json", "html"]
+						"enum": ["text", "json", "html", "xml"]
 					},
 
 					"headers": {

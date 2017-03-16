@@ -28,19 +28,42 @@ block content
 					#myTabContent.tab-content
 						.tab-pane.fade.active.in#response
 							label.radio-inline
-								input(type="radio", name="inlineRadioOptions", value="option1")
-								| JSON
+								input(type="radio", name="inlineRadioOptions", value="json", checked="true")
+								| JSON 
+								small.text-muted (application/json)
 							label.radio-inline
-								input(type="radio", name="inlineRadioOptions", value="option2")
-								| HTML
+								input(type="radio", name="inlineRadioOptions", value="html")
+								| HTML 
+								small.text-muted (text/html)
 							label.radio-inline
-								input(type="radio", name="inlineRadioOptions", value="option3")
-								| TEXT
+								input(type="radio", name="inlineRadioOptions", value="xml")
+								| XML 
+								small.text-muted (text/xml)
+							label.radio-inline
+								input(type="radio", name="inlineRadioOptions", value="text")
+								| Text 
+								small.text-muted (text/plain)
 							
 							textarea#code.form-control
 						
 						.tab-pane.fade#headers
-					
+							ul.list-unstyled
+								li.form-group
+									.row
+										.col-md-4
+											input.form-control.input-sm(type="text", placeholder="Key")
+										.col-md-4
+											input.form-control.input-sm(type="text", placeholder="Value")
+										a.text-muted(href="#")
+											i.material-icons(style="margin-top: 5px;") remove_circle
+								li.form-group
+									.row
+										.col-md-4
+											input.form-control.input-sm(type="text", placeholder="Key")
+										.col-md-4
+											input.form-control.input-sm(type="text", placeholder="Value")
+										a.text-muted(href="#")
+											i.material-icons(style="margin-top: 5px;") remove_circle
 				.request-view
 					hr
 					h4 Requests view
