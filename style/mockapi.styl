@@ -34,41 +34,98 @@ body > .container-fluid
 			margin: 0
 			line-height: 60px
 
-	li
-		a
-			padding: 0 15px
-			margin: 0 -15px
-			height: 60px
+	.nav-sidebar
+		& > li
+			& > div[data-role=project]
+				position: relative
+				padding: 0 15px
+				margin: 0 -15px
 
-			h3
-			h4
-			h5
-				padding: 0 5px 0 15px
-				margin: 0
-				line-height: 60px
-				text-overflow: ellipsis
-				white-space: nowrap
-				overflow: hidden
-				width: calc(100% - 24px)
+				h3
+				h4
+				h5
+				h6
+					color: #18bc9c
+					padding: 0 5px 0 15px
+					margin: 0
+					line-height: 60px
+					text-overflow: ellipsis
+					white-space: nowrap
+					overflow: hidden
+					width: calc(100% - 24px)
 
-			i
-				margin-top: 17px
-				animation-duration: 0.2s
-				-webkit-animation-duration: 0.2s
-				-moz-animation-duration: 0.2s
+				i
+					margin-top: 17px
+					animation-duration: 0.2s
+					-webkit-animation-duration: 0.2s
+					-moz-animation-duration: 0.2s
 
-			i[data-action]
-				display: none
-				cursor: pointer
+				& > [data-action]
+					display: none
+					cursor: pointer
+					padding: 0
+				& > .dropdown-menu
+					left: initial
+					right: 0
+				&:hover
+					background-color: #ecf0f1
+					& > h5
+						width: calc(100% - 24px * 2)
+					& > [data-action]
+						display: inline-block
+						&:hover
+							color: #18bc9c
 
-			&:hover
-				& > h5
-					width: calc(100% - 24px * 2)
-				& > i[data-action]
-					display: inline-block
-					&:hover
-						color: #18bc9c
-	
+				&[aria-expanded=true]
+					background-color: #f3f6f6
+					box-shadow: 0 3px 4px rgba(0,0,0,.2)
+
+			& > .endpoints
+				margin-top: 5px
+
+				& > li 
+					& > a
+						display: block
+						padding: 0 15px
+						margin: 0 -15px
+						height: 40px
+						text-decoration: none
+						color: #2c3e50
+
+						&:hover
+							background-color: #f3f6f6
+
+						.label
+							display: block
+							margin-top: 21px
+							width: 42px
+							text-align: center
+							font-weight: 400
+							float: left
+
+						small
+							vertical-align: top
+							display: inline-block
+							line-height: 40px
+							font-size: 60%
+							font-weight: 700
+							width: 24px
+							text-align: right
+
+						h5
+						h6
+							display: inline-block
+							text-transform: uppercase
+							margin: 0
+							padding-left: 15px
+							line-height: 40px
+							text-overflow: ellipsis
+							white-space: nowrap
+							overflow: hidden
+							width: calc(100% - 24px)
+
+					&:last-child > a
+						border-bottom: 1px solid #dce4ec
 //API container
 #api-container
 	padding 0 10px

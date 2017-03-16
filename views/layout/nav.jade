@@ -5,39 +5,63 @@
 
 ul.nav.nav-sidebar
 	li
-		a(href="")
+		.clearfix.collapsed(data-target="#collapse-1", aria-expanded="false", data-toggle="collapse", data-role="project")
 			i.material-icons.pull-left.text-muted folder
-			h5.pull-left Projects Endpoint Largeeeer name here
-			i.material-icons.text-muted.animated.slideInRight(data-action="more") more_vert
+			h5.pull-left 
+				em public-
+				| projects
+			i.material-icons.text-muted.animated.slideInRight.dropdown-toggle(data-action="more", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") more_vert
+			ul.dropdown-menu
+				li: a Add endpoint
+				li: a Rename project
+				li.divider(role="separator")
+				li: a Delete project
+
+		ul.list-unstyled.endpoints.collapse#collapse-1
+			li
+				a
+					small.text-success GET
+					h6 Projects endpoint Projects endpoint Projects endpoint
+			li
+				a
+					small.text-info POST
+					h6 Projects endpoint
+			li
+				a
+					small.text-warning PUT
+					h6 Projects endpoint
+			li
+				a
+					small.text-danger DEL
+					h6 Projects endpoint
 
 	li
-		a(href="")
+		.clearfix.collapsed(data-target="#collapse-2", aria-expanded="false", data-toggle="collapse", data-role="project")
+			i.material-icons.pull-left.text-muted folder
+			h5.pull-left 
+				em public-
+				| calcubox
+			i.material-icons.text-muted.animated.slideInRight(data-action="more") more_vert
+
+		ul.list-unstyled.endpoints.collapse#collapse-2
+			li
+				a
+					small.text-success GET
+					h6 Projects endpoint Projects endpoint Projects endpoint
+			li
+				a
+					small.text-info POST
+					h6 Projects endpoint
+			li
+				a
+					small.text-warning PUT
+					h6 Projects endpoint
+			li
+				a
+					small.text-danger DEL
+					h6 Projects endpoint
+	li
+		.clearfix.collapsed(data-target="#collapse-3", aria-expanded="false", data-toggle="collapse", data-role="project")
 			i.material-icons.pull-left.text-muted folder
 			h5.pull-left Projects
 			i.material-icons.text-muted.animated.slideInRight(data-action="more") more_vert
-
-	li
-		a(href="")
-			i.material-icons.pull-left.text-muted folder
-			h5.pull-left Projects
-			i.material-icons.text-muted.animated.slideInRight(data-action="more") more_vert
-
-script#topic-item(type='template/handlebars')
-	a.category(data-role='actionable-items') {{name}}
-		span(data-role='item-actions')
-			i.fa.fa-fw.fa-pencil(title="Editar categoría", _id="{{_id}}")
-			i.fa.fa-fw.fa-times(title="Eliminar categoría", _id="{{_id}}")
-		.pull-right
-			i.fa.fa-fw.fa-plus(title="Crear nuevo documento", _id="{{_id}}", data-action="add-document")
-
-	| {{#each index}}
-	a(data-role='actionable-items', title='Click para editar', data-action="edit-document", _id="{{_id}}")
-		i.fa.fa-fw.fa-file-text-o
-		span.doc-link &nbsp;{{name}}
-		div(data-role='item-actions').pull-right
-			i.fa.fa-fw.fa-times(data-action="remove-document", title="Eliminar documento", _id="{{_id}}")
-	| {{/each}}
-	| {{#unless index}}
-	a: i.text-muted sin documentos
-	| {{/unless}}
-	hr
