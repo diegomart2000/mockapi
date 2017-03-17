@@ -26,7 +26,11 @@ define([
 			this.spinner = new SpinnerView();
 			this.projectList = new ProjectListView({collection: this.collection});
 
-			this.collection.fetch();
+			this.collection.fetch({
+				data: {
+					ids: 'public-new,public-boilerplate'
+				}
+			});
 			this.render();
 		},
 

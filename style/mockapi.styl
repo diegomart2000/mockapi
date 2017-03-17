@@ -51,7 +51,7 @@ body > .container-fluid
 //Navigation Side Bar
 .sidebar
 	position: fixed
-	height: calc(100% - 60px)
+	height: "calc(100% - %s)" % header-size
 	overflow-y: scroll
 	border-right: 2px solid #dce4ec
 
@@ -187,7 +187,7 @@ body > .container-fluid
 				text-transform: uppercase
 
 	.api-body
-		margin-top: calc(header-size + 25px)
+		margin-top: "calc(%s + 25px)" % header-size
 
 	.input-group
 		position: relative

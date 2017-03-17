@@ -17,15 +17,15 @@ var _ = require('underscore');
 /**
  * Load the given _id
  */
-exports.list = function(user, onSuccess, onError) {
+exports.list = function(user, query, onSuccess, onError) {
 	logger.info('project service : list : about to load the project [%s]', user._id);
 
 	var userId = typeof user._id == 'string' ? ProjectDao.ObjectId(user._id) : user._id;
-
+	query = _.extend({}, query, {userId});
 	try{
 		var dao = new ProjectDao();
 		var promise = dao
-			.list({userId});
+			.list(query);
 
 		if(onSuccess) promise.done(onSuccess, onError);
 		else return promise;

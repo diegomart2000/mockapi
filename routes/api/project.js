@@ -27,13 +27,29 @@ function ProjectRouter(app) {
  */
 function list(req, res) {
 	var user = req.user;
-	var projectId = req.params.id;
+	var ids = req.query.ids;
 
-	logger.info('project router : list : list project by id ', projectId);
+	var query = {}
+	if (ids) {
+		query = ids
+			.split(',')
+			.reduce((memo, id) => {
+				memo._id.$in.push(id);
+				return memo;
+			}, {
+				_id: {
+					$in: []
+				}
+			});
+
+	}
+
+	logger.info('project router : list : list projects ', ids, query);
 
 	try {
 		projectService.list(
 			user,
+			query,
 
 			//onSuccess
 			function(projects) {
