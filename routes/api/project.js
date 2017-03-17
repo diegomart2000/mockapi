@@ -83,8 +83,10 @@ function get(req, res) {
 
 			//onSuccess
 			function(project) {
-				project = project || Exception.notFound('Project', projectId);
-				res.send(project);
+				if (!project)
+					res.status(404).send(Exception.notFound('Project', projectId));
+				else
+					res.send(project);
 			},
 
 			//onError
@@ -149,8 +151,10 @@ function put(req, res) {
 
 			//onSuccess
 			function(project) {
-				project = project || Exception.notFound('Project', projectId);
-				res.send(project);
+				if (!project)
+					res.status(404).send(Exception.notFound('Project', projectId));
+				else
+					res.send(project);
 			},
 
 			//onError

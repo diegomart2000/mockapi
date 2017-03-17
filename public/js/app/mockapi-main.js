@@ -4,7 +4,6 @@ var MockApi = {};
 //Helper to draw the resource method name
 Handlebars.registerHelper('resource-method', function() {
 	var method = this.method;
-	console.log(method);
 	var methodMap = {
 		GET: "text-success",
 		POST: "text-info",

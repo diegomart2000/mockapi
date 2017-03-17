@@ -81,7 +81,7 @@ function resources(req, res, next) {
 					if (project) {
 						res.send(project);
 					} else {
-						res.send(Exception.notFound('Project', host));
+						res.status(404).send(Exception.notFound('Project', host));
 					}
 				},
 
@@ -93,6 +93,6 @@ function resources(req, res, next) {
 	} catch (err) {
 		var title = 'Error loading project';
 		logger.error(title, err);
-		res.send(new Exception(500, title, err.message, err));
+		res.status(500).send(new Exception(500, title, err.message, err));
 	}
 }

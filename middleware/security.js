@@ -36,7 +36,7 @@ var ACL = {
 	}
 };
 
-const ANONYMUS = '111111111111111111111111';
+const ANONYMOUS = '111111111111111111111111';
 
 //Session middleware, to be used only on API or Dashboard
 exports.session = express.session({
@@ -58,14 +58,14 @@ exports.restrict = function(req, res, next) {
 
 //User Session
 exports.user = function(req, res, next) {
-	if (!req.session.user) req.session.user = {_id: ANONYMUS, isAnonymus: true};
+	if (!req.session.user) req.session.user = {_id: ANONYMOUS, isAnonymous: true};
 	req.user = req.session.user;
 	next();
 };
 
 //If the user is anonymus, make the id always public prefixed
 exports.project = function(req, res, next) {
-	if(req.user._id === ANONYMUS){
+	if(req.user._id === ANONYMOUS){
 		if(req.params.id) req.params.id = !req.params.id.match(/^public\-/) ? ['public', req.params.id].join('-') : req.params.id;
 		if(req.body._id) req.body._id = !req.body._id.match(/^public\-/) ? ['public', req.body._id].join('-') : req.body._id;
 	}

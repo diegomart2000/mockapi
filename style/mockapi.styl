@@ -33,16 +33,32 @@ header
 		height: header-size
 
 	.header-main
-		& > ul
+		& > ul.navbar-nav
 			& > li
+				margin-left: 15px
+				line-height: header-size
+				height: header-size
+
 				& > a
+					display: inline-block
 					height: logo-size
 					line-height: logo-size
-					display: block
 					padding: 0 10px
 					background-color: rgba(0,0,0,.3)
 					border-radius: 4px
 					color: header-color
+					-webkit-transition: 0.1s linear
+					-o-transition: 0.1s linear
+					transition: 0.1s linear
+					&:hover
+						background-color: rgba(0,0,0,.4)
+						color: rgb(255,255,255)
+				&.open
+					& > a
+						line-height: header-size
+						height: header-size
+						background-color: rgba(0,0,0,.3)
+						color: header-color
 	.logo
 		//border: 1px solid header-color
 		text-align: center
@@ -189,7 +205,7 @@ body > .container-fluid
 		padding: 7px 25px
 		background-color: #ecf0f1
 		top: header-size
-		z-index: 9
+		z-index: 5
 
 		input
 			font-size: 19px
