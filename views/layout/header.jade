@@ -6,6 +6,13 @@
 					.header-sidebar.flex
 						.logo
 
-				.col-sm-9.col-md-10.header-main
-					if user.isAnonymus
-						| Anonymus		
+				.col-sm-9.col-md-10
+					.header-main.flex
+						ul.list-inline(style="margin: auto 0 auto auto;")
+							li
+								a(href="https://github.com/diegomart2000/mockapi-issues/issues", target="_BLANK") Report an Issue
+							li
+								a
+									if user.isAnonymus
+										| Anonymus
+									span.caret

@@ -3,6 +3,7 @@
 
 logo-size = 34px
 header-size = 60px
+header-color = rgba(255,255,255,.8)
 
 .flex
 	height: 100%
@@ -27,11 +28,23 @@ header
 		border-radius: 0
 		margin-bottom: 0
 
+	.header-main
 	.header-sidebar
 		height: header-size
 
+	.header-main
+		& > ul
+			& > li
+				& > a
+					height: logo-size
+					line-height: logo-size
+					display: block
+					padding: 0 10px
+					background-color: rgba(0,0,0,.3)
+					border-radius: 4px
+					color: header-color
 	.logo
-		//border: 1px solid rgba(255,255,255,.9)
+		//border: 1px solid header-color
 		text-align: center
 		height: logo-size
 		width: logo-size
@@ -39,7 +52,7 @@ header
 		font-size: 24px
 		margin: auto ((logo-size - 24px) / 4 * -1 )
 		background-color: rgba(0,0,0,.3)
-		color: rgba(255,255,255,.9)
+		color: header-color
 		font-family: 'Ewert', cursive
 		border-radius: 4px
 		&:after
