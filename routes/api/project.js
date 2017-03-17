@@ -15,9 +15,9 @@ module.exports = ProjectRouter;
  * The Project endpoint exposes a set of methods for managing project objects.
  */
 function ProjectRouter(app) {
-	app.get('/_m_/api/project', security.session, security.restrict, list);
+	app.get('/_m_/api/project', security.session, security.user, security.restrict, list);
 	app.get('/_m_/api/project/:id', security.session, security.user, security.project, get);
-	app.post('/_m_/api/project', security.session, security.user, security.project, post);
+	app.post('/_m_/api/project(/:id)?', security.session, security.user, security.project, post);
 	app.put('/_m_/api/project/:id', security.session, security.user, security.project, put);
 	app.del('/_m_/api/project/:id', security.session, security.user, security.project, del);
 };

@@ -20,7 +20,7 @@ module.exports = IndexRouter;
  */
 function IndexRouter(app) {
 	app.get('/', index);
-	app.get('/_m_/projects', security.session, projects);
+	app.get('/_m_/projects', security.session, security.user, projects);
 
 	//To resolve all resources
 	app.get('/', resources);
@@ -49,14 +49,23 @@ function index(req, res, next) {
  * Helper to render a index of a partial, embbeded on a full container
  */
 function projects(req, res) {
-	res.render('dashboard/main');
+	var user = req.user;
+	logger.debug('index router : projects : rendering ', user);
+	res.render('dashboard/main', {user});
 };
 
 /**
  * Renders the mocked API response
  */
-function resources(req, res) {
+function resources(req, res, next) {
 	var host = req.header('host').split('.').reverse().pop();
+
+	//If the host is dashboard, omit this
+	if(host === config.host){
+		next();
+		return;
+	}
+
 	logger.debug('resources : check for [%s, %s, %s]', (path = req.originalUrl), (method = req.route.method), (host));
 
 	//Allow CORS

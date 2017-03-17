@@ -15,11 +15,11 @@ module.exports = ConnectRouter;
  * The Authentication endpoint exposes a set of methods for managing authentication.
  */
 function ConnectRouter(app){
-	app.post('/api/user/signin', security.session, signin);
-	app.post('/api/user/signup', security.session, signup);
-	app.get('/api/user/signout', security.session, security.restrict, signout);
-	app.get('/api/user/self', security.session, security.restrict, aboutMe);
-	app.put('/api/user/:id', security.session, security.restrict, put);
+	app.post('/_m_/api/user/signin', security.session, signin);
+	app.post('/_m_/api/user/signup', security.session, signup);
+	app.get('/_m_/api/user/signout', security.session, security.restrict, signout);
+	app.get('/_m_/api/user/self', security.session, security.restrict, aboutMe);
+	app.put('/_m_/api/user/:id', security.session, security.restrict, put);
 };
 
 

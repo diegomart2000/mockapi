@@ -1,67 +1,34 @@
 ﻿
 .sidebar-header.clearfix
-	h5.pull-left(style="width: calc(100% - 24px)") Projects
+	h5.pull-left(style="width: calc(100% - 24px)") API Projects
 	a(href="#", data-action="add").text-muted: i.material-icons(style="margin-top: 17px") add_box
 
-ul.nav.nav-sidebar
-	li
-		.clearfix.collapsed(data-target="#collapse-1", aria-expanded="false", data-toggle="collapse", data-role="project")
-			i.material-icons.pull-left.text-muted folder
-			h5.pull-left 
-				em public-
-				| projects
-			i.material-icons.text-muted.animated.slideInRight.dropdown-toggle(data-action="more", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") more_vert
-			ul.dropdown-menu
-				li: a Add endpoint
-				li: a Rename project
-				li.divider(role="separator")
-				li: a Delete project
+ul.nav.nav-sidebar#projects-list
+	
+script#projects-empty-template(type="text/x-handlebars-template")
+	| Nothing to show, so far...
 
-		ul.list-unstyled.endpoints.collapse#collapse-1
-			li
-				a
-					small.text-success GET
-					h6 Projects endpoint Projects endpoint Projects endpoint
-			li
-				a
-					small.text-info POST
-					h6 Projects endpoint
-			li
-				a
-					small.text-warning PUT
-					h6 Projects endpoint
-			li
-				a
-					small.text-danger DEL
-					h6 Projects endpoint
+script#project-template(type="text/x-handlebars-template")
+	.clearfix.collapsed(data-target="#collapse-{{_id}}", aria-expanded="false", data-toggle="collapse", data-role="project")
+		i.material-icons.pull-left.text-muted folder
+		| {{project-name}}
+		i.material-icons.text-muted.animated.slideInRight.dropdown-toggle(data-action="more", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") more_vert
+		ul.dropdown-menu
+			li: a Add endpoint
+			li: a Rename project
+			li.divider(role="separator")
+			li: a Delete project
 
-	li
-		.clearfix.collapsed(data-target="#collapse-2", aria-expanded="false", data-toggle="collapse", data-role="project")
-			i.material-icons.pull-left.text-muted folder
-			h5.pull-left 
-				em public-
-				| calcubox
-			i.material-icons.text-muted.animated.slideInRight(data-action="more") more_vert
+	ul.list-unstyled.endpoints.collapse(id="collapse-{{_id}}")
+		| {{#each resources}}
+		li
+			a
+				| {{resource-method method}}
+				h6
+					| {{#if name}}
+					span.text-uppercase {{name}}
+					| {{^}}
+					em.text-lowercas {{path}}
+					| {{/if}}
+		| {{/each}}
 
-		ul.list-unstyled.endpoints.collapse#collapse-2
-			li
-				a
-					small.text-success GET
-					h6 Projects endpoint Projects endpoint Projects endpoint
-			li
-				a
-					small.text-info POST
-					h6 Projects endpoint
-			li
-				a
-					small.text-warning PUT
-					h6 Projects endpoint
-			li
-				a
-					small.text-danger DEL
-					h6 Projects endpoint
-	li
-		.clearfix.collapsed(data-target="#collapse-3", aria-expanded="false", data-toggle="collapse", data-role="project")
-			i.material-icons.pull-left.text-muted folder
-			h5.pull-left Projects
-			i.material-icons.text-muted.animated.slideInRight(data-action="more") more_vert

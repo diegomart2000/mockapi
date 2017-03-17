@@ -65,9 +65,9 @@ block content
 										a.text-muted(href="#")
 											i.material-icons(style="margin-top: 5px;") remove_circle
 				.request-view
-					hr
-					h4 Requests view
-						span.badge.pull-right Last call 10ms ago
+					.well(style="margin: 25px 0 10px 0;")
+						h4(style="margin: 0") Requests view
+							span.badge.pull-right Last call 10ms ago
 					ul.nav.nav-tabs
 						li.active: a(href="#request-body", data-toggle="tab", aria-expanded="true") Request
 						li: a(href="#request-headers", data-toggle="tab", aria-expanded="false") Headers
@@ -76,3 +76,8 @@ block content
 							textarea#code-request.form-control
 						
 						.tab-pane.fade#request-headers
+
+	.spinner.animated.slideInDown
+		.bounce1
+		.bounce2
+		.bounce3

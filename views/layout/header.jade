@@ -1,9 +1,11 @@
 ﻿header
 	.navbar.navbar-default
 		.container-fluid
-			.col-sm-3.col-md-2.header-sidebar 
-				if user
-					| #{user.display}
+			.row
+				.col-sm-3.col-md-2
+					.header-sidebar.flex
+						.logo
 
-			.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.header-main
-		
+				.col-sm-9.col-md-10.header-main
+					if user.isAnonymus
+						| Anonymus		

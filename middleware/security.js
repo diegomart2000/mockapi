@@ -58,7 +58,7 @@ exports.restrict = function(req, res, next) {
 
 //User Session
 exports.user = function(req, res, next) {
-	if (!req.session.user) req.session.user = {_id: ANONYMUS};
+	if (!req.session.user) req.session.user = {_id: ANONYMUS, isAnonymus: true};
 	req.user = req.session.user;
 	next();
 };

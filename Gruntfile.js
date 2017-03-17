@@ -18,6 +18,7 @@ module.exports = function(grunt) {
 					'lib/underscore/underscore.js',
 					'lib/backbone/backbone.js',
 					'lib/handlebars/handlebars.js',
+					'lib/moment/moment.js',
 					'lib/codemirror/codemirror.js',
 					'bower_components/codemirror/mode/javascript/javascript.js',
 					'bower_components/codemirror/mode/htmlmixed/htmlmixed.js'	
@@ -35,6 +36,17 @@ module.exports = function(grunt) {
 
 				files: {
 					'public/css/vendor-bundle.css': ['lib/animate.css/animate.css', 'lib/bootswatch/index.css', 'lib/codemirror/codemirror.css'],
+				}
+			}
+		},
+
+		uglify: {
+			options: {
+				banner: '/*! <%= pkg.name %> */\n'
+			},
+			dist: {
+				files: {
+					'public/js/vendor-bundle-min.js': ['<%= concat.base.dest %>'],
 				}
 			}
 		},
@@ -78,11 +90,12 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-bower-task');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-stylus');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
-	grunt.registerTask('default', ['bower', 'cssmin', 'stylus', 'concat', 'copy', 'clean']);
+	grunt.registerTask('default', ['bower', 'cssmin', 'stylus', 'concat', 'uglify', 'copy', 'clean']);
 };

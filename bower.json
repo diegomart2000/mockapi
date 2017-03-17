@@ -21,6 +21,7 @@
     "animate.css": "^3.5.2",
     "bootswatch": "https://bootswatch.com/flatly/bootstrap.min.css",
     "codemirror": "^5.24.2",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "moment": "^2.17.1"
   }
 }
