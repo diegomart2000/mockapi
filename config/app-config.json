@@ -8,7 +8,7 @@
 		},
 
 		"host": "dev",
-		"salt": "Stay hungry, stay foolish."
+		"salt": "Salt for dev"
 	},
 	
 	"PROD":{
@@ -19,6 +19,6 @@
 			"noReply": "{{name}} <no-reply@mockapi.co>"
 		},
 		
-		"salt": "My job is not to be easy on people. My Job is to make them better."
+		"salt": "Salt for .o.0@prod@0.o."
 	}
 }
