@@ -36,8 +36,6 @@ Handlebars.registerHelper('project-name', function() {
 
 //Application Start
 require(["./view/app_view"], function(AppView) {
-	console.log('Inspect this 8====D bitch!');
-
 	MockApi.Events = {};
 	_.extend(MockApi.Events, Backbone.Events);
 
